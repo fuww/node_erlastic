@@ -11,6 +11,8 @@ function BertClass() {
 	this.BERT_START = 131;
 	this.SMALL_ATOM = 115;
 	this.ATOM = 100;
+	this.SMALL_ATOM_UTF_8 = 119;
+	this.ATOM_UTF_8 = 118;
 	this.BINARY = 109;
 	this.SMALL_INTEGER = 97;
 	this.INTEGER = 98;
@@ -285,8 +287,10 @@ BertClass.prototype.decode_inner = function (buffer) {
 	buffer = buffer.slice(1);
 	switch (Type) {
 	case this.SMALL_ATOM:
+	case this.SMALL_ATOM_UTF_8:
 		return this.decode_atom(buffer, 1);
 	case this.ATOM:
+	case this.ATOM_UTF_8:
 		return this.decode_atom(buffer, 2);
 	case this.BINARY:
 		return this.decode_binary(buffer);
